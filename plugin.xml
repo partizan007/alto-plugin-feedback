@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin compatible="alto">
+    <id>feedback</id>
+    <name>
+        <lang name="default">Feedback forms</lang>
+    </name>
+    <author>
+        <lang name="default">Alto CMS Team</lang>
+    </author>
+    <homepage>http://altocms.com</homepage>
+    <version>1.1.0</version>
+    <dirname>feedback</dirname>
+    <requires>
+        <alto>
+            <version>1.0.2</version>
+        </alto>
+        <system>
+            <php>5.3.0</php>
+        </system>
+    </requires>
+    <description>
+        <lang name="default">Feedback forms</lang>
+    </description>
+</plugin>

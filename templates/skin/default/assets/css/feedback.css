@@ -1,0 +1,17 @@
+.form-feedback {
+  margin: 10px 0;
+}
+.form-feedback .form-group {
+  margin-bottom: 10px;
+}
+.form-feedback .form-group input[type=text] {
+  width: 98%;
+}
+.form-feedback .form-group textarea,
+.form-feedback .form-group input[type=text] {
+  width: 100%;
+}
+.form-feedback .form-group input.form-control-type-number {
+  width: 60px;
+  text-align: right;
+}
