@@ -77,26 +77,44 @@ class PluginFeedback_ModuleFeedback extends Module {
     protected function _formParseTexts($aForm) {
 
         if (isset($aForm['header']['title'])) {
-            $aForm['header']['title'] = E::Lang_Text($aForm['header']['title']);
+            $aForm['header']['title'] = $this->_text($aForm['header']['title']);
         }
         if (isset($aForm['header']['text'])) {
-            $aForm['header']['text'] = E::Lang_Text($aForm['header']['text']);
+            $aForm['header']['text'] = $this->_text($aForm['header']['text']);
         }
 
         foreach ($aForm['fields'] as $sFieldName => $aFieldData) {
             if (isset($aFieldData['label'])) {
-                $aForm['fields'][$sFieldName]['label'] = E::Lang_Text($aFieldData['label']);
+                $aForm['fields'][$sFieldName]['label'] = $this->_text($aFieldData['label']);
             }
             if (isset($aFieldData['note'])) {
-                $aForm['fields'][$sFieldName]['note'] = E::Lang_Text($aFieldData['note']);
+                $aForm['fields'][$sFieldName]['note'] = $this->_text($aFieldData['note']);
             }
             if (isset($aFieldData['placeholder'])) {
-                $aForm['fields'][$sFieldName]['placeholder'] = E::Lang_Text($aFieldData['placeholder']);
+                $aForm['fields'][$sFieldName]['placeholder'] = $this->_text($aFieldData['placeholder']);
             }
         }
 
         return $aForm;
     }
+
+    /**
+     * @param string $sTextKey
+     *
+     * @return string
+     */
+    protected function _text($sTextKey) {
+
+        if (version_compare(ALTO_VERSION, '1.1.0') > 0) {
+            return E::Lang_Text($sTextKey);
+        }
+        if (substr($sTextKey, 0, 2) == '{{' && substr($sTextKey, -2) == '}}') {
+            $sTextKey = mb_substr($sTextKey, 2, mb_strlen($sTextKey) - 4);
+            return E::Lang_Get($sTextKey);
+        }
+        return $sTextKey;
+    }
+
 }
 
 // EOF
